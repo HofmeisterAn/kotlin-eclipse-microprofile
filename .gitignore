@@ -15,11 +15,8 @@ gradle-app.setting
 
 # # Work around https://youtrack.jetbrains.com/issue/IDEA-116898
 # gradle/wrapper/gradle-wrapper.properties
-
 # Covers JetBrains IDEs: IntelliJ, RubyMine, PhpStorm, AppCode, PyCharm, CLion, Android Studio and WebStorm
 # Reference: https://intellij-support.jetbrains.com/hc/en-us/articles/206544839
-
-.idea/
 
 # User-specific stuff
 .idea/**/workspace.xml
@@ -51,8 +48,8 @@ gradle-app.setting
 # .idea/modules.xml
 # .idea/*.iml
 # .idea/modules
-
 # CMake
+
 cmake-build-*/
 
 # Mongo Explorer plugin
@@ -81,3 +78,28 @@ fabric.properties
 
 # Editor-based Rest Client
 .idea/httpRequests
+
+# Vue frontend
+node_modules/
+/dist/
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+/test/unit/coverage/
+/test/e2e/reports/
+selenium-debug.log
+
+# Editor directories and files
+.idea
+.vscode
+*.iml
+*.suo
+*.ntvs*
+*.njsproj
+*.sln
+
+# Project
+frontend/dist
+backend/build
+backend/src/main/webapp/index.html
+backend/src/main/webapp/static

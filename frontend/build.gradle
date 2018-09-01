@@ -1,0 +1,9 @@
+task npmInstall(type: Exec) {
+  executable 'npm'
+  args = ['install']
+}
+
+task npmRunBuild(type: Exec) {
+  executable 'npm'
+  args = ['run', 'build']
+}

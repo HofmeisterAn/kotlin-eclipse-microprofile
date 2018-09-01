@@ -1,6 +1,6 @@
 # Eclipse MicroProfile with Kotlin
 
-An example implementation of the Eclipse MicroProfile 1.3 with JTA, Arquillian and Payara Micro in Kotlin. Later I will add a Vue.js front-end including an automatic build pipeline.
+An example implementation of the Eclipse MicroProfile 1.3 with JTA, Arquillian and Payara Micro in Kotlin. Vue.js is used as front end framework. Later I will add an automatic build pipeline.
 
 ## Getting Started
 
@@ -8,7 +8,7 @@ To start the application execute the Gradle task `run`. Java 9 or newer is not s
 
 ### Prerequisites
 
-No Prerequisites except Java. Everything else is inside this repository.
+This project requires Java and [Node.js](https://github.com/nodejs/node). Run the the Gradle task `npmInstall` and `npmRunBuild` to install all dependencies and build the front end before running the application.
 
 ## Authors
 
