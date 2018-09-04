@@ -98,8 +98,11 @@ selenium-debug.log
 *.njsproj
 *.sln
 
-# Project
+# Project related files
 frontend/dist
 backend/build
 backend/src/main/webapp/index.html
-backend/src/main/webapp/static
+backend/src/main/webapp/favicon.ico
+backend/src/main/webapp/css
+backend/src/main/webapp/img
+backend/src/main/webapp/js
