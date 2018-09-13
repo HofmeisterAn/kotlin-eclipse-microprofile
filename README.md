@@ -4,7 +4,7 @@ An example implementation of the Eclipse MicroProfile 1.3 with JTA, Arquillian a
 
 ## Getting Started
 
-To start the application execute the Gradle task `run`. Java 9 or newer is not supported by Payara Micro and the ShrinkWrap Resolver for Gradle.
+To start the application execute the Gradle task `start`. Java 9 or newer is not supported by Payara Micro and the ShrinkWrap Resolver for Gradle.
 
 ### Prerequisites
 

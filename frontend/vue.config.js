@@ -1,3 +1,3 @@
 module.exports = {
-  baseUrl: '/backend/'
+  baseUrl: '/app/'
 }

@@ -1,6 +1,6 @@
 buildscript {
 	repositories { jcenter() }
-	dependencies { 
+	dependencies {
 		classpath "org.jetbrains.kotlin:kotlin-gradle-plugin:${project.'kotlin.version'}"
 		classpath "com.diffplug.spotless:spotless-plugin-gradle:${project.'spotless.version'}"
 	}
@@ -43,10 +43,10 @@ configure(subprojects.findAll { it.name != 'frontend' }) {
 		}
 		kotlin {
 			ktlint().userData([
-				'indent_size'             : '2',
+				'indent_size' : '2',
 				'continuation_indent_size': '2',
-				'insert_final_newline'    : 'true',
-				'max_line_length'         : 'off'
+				'insert_final_newline' : 'true',
+				'max_line_length' : 'off'
 			])
 		}
 	}
