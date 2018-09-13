@@ -39,7 +39,7 @@ war {
   archiveName 'app.war'
 }
 
-def payaraMicroJar = 'payara-micro-5.183-20180810.000318-70.jar'
+def payaraMicroJar = 'payara-micro-5.183.jar'
 
 /**
  * Copies the front end assets to webapp.
@@ -65,7 +65,9 @@ task debug(type: JavaExec, dependsOn: [copyFrontendAssets, war]) {
   args = [
     payaraMicroJar,
     '--deploy',
-    war.archivePath
+    war.archivePath,
+    '--nocluster',
+    '--nohostaware'
   ]
 }
 
@@ -78,7 +80,9 @@ task start(type: JavaExec, dependsOn: [copyFrontendAssets, war]) {
   args = [
     payaraMicroJar,
     '--deploy',
-    war.archivePath
+    war.archivePath,
+    '--nocluster',
+    '--nohostaware'
   ]
 }
 
