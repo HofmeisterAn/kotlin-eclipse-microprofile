@@ -16,8 +16,7 @@ internal class StudentTest {
     @JvmStatic
     @Deployment
     fun createDeployment(): WebArchive {
-      return ShrinkWrap.create(EmbeddedGradleImporter::class.java).forThisProjectDirectory().forTasks("war").importBuildOutput()
-        .`as`(WebArchive::class.java)
+      return ShrinkWrap.create(EmbeddedGradleImporter::class.java).forThisProjectDirectory().importBuildOutput("./build/libs/app.war").`as`(WebArchive::class.java)
     }
   }
 
@@ -25,7 +24,8 @@ internal class StudentTest {
   private lateinit var studentRepository: StudentRepository
 
   @Test
-  fun `Simple test without any purpose, except testing dependency injection`() {
+  fun simple_test_without_any_purpose_except_testing_dependency_injection() {
+    // We cannot use the Kotlin feature for readable tests here, Arquillian won't run our tests properly.
     assertTrue(studentRepository.all().isEmpty())
   }
 }
