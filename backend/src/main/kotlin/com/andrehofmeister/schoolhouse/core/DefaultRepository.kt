@@ -7,5 +7,5 @@ import javax.persistence.PersistenceContext
 @Stateless
 abstract class DefaultRepository<T> : DefaultService<T> {
   @field:[PersistenceContext(unitName = "persistence-unit")]
-  protected lateinit var entityManager: EntityManager
+  protected open lateinit var entityManager: EntityManager
 }

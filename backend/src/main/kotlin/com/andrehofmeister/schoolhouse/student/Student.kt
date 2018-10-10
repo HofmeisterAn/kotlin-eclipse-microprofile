@@ -24,6 +24,13 @@ data class Student(
   @Column(name = "birthday")
   var birthday: Date = Date()
 ) {
+
+  companion object {
+    val default: Student by lazy {
+      Student()
+    }
+  }
+
   val fullName: String
     get() = "$firstName $lastName"
 }
