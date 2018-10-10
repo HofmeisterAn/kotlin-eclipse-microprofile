@@ -20,7 +20,7 @@ class RedirectFilter : Filter {
   }
 
   /**
-   * Serves `index.html` if the URL doesn't match any static assets. Required for Vuejs HTML5 History Mode.
+   * Serves `index.html` if the URL doesn't match any static assets. Required for Vue.js HTML5 History Mode.
    */
   override fun doFilter(request: ServletRequest, response: ServletResponse, chain: FilterChain) {
     if (request is HttpServletRequest) {

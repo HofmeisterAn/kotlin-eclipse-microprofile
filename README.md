@@ -8,7 +8,7 @@ To start the application execute the Gradle task `start`. Java 9 or newer is not
 
 ### Prerequisites
 
-This project requires Java and [Node.js](https://github.com/nodejs/node). Run the the Gradle task `npmInstall` and `npmRunBuild` to install all dependencies and build the front end before running the application.
+This project requires Java and [Node.js](https://github.com/nodejs/node). Run the the Gradle task `npmInstall` and `npmRunBuild` to install all dependencies and build the front end before running the application (`./gradlew npmInstall npmRunBuild debug`). By default the application is accessible at `http://localhost:8080/app/index.html`.
 
 ## Authors
 

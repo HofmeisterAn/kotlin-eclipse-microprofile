@@ -5,6 +5,7 @@
     <jta-data-source>java:app/jdbc/database</jta-data-source>
     <class>com.andrehofmeister.schoolhouse.student.Student</class>
     <properties>
+      <!-- provider specific -->
       <property name="hibernate.dialect" value="org.hibernate.dialect.H2Dialect" />
       <property name="hibernate.hbm2ddl.auto" value="create" />
       <property name="hibernate.show_sql" value="true" />

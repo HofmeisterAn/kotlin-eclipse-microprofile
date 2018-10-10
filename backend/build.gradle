@@ -88,8 +88,6 @@ task start(type: JavaExec, dependsOn: [copyFrontendAssets, war]) {
  * Runs the Arquillian tests based on Payara micro.
  */
 task payaraMicroManagedTest(type: Test) {
-  classpath = sourceSets.main.output + sourceSets.test.output
-
   systemProperties = [
     'arquillian.launch': 'payara-micro-managed'
   ]
