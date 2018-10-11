@@ -6,22 +6,32 @@
 
 <script lang="ts">
 import Vue from 'vue';
+import { HttpCommon } from '../../common/HttpCommon';
 
 export default Vue.extend({
-    data() {
-      return {
-        count: 9
-      };
-    },
-    methods: {
-      foo(): string { return 'foo'; },
-      bar(): string { return 'bar'; }
-    },
-    computed: {
-      fooBar(): string {
-        return this.foo() + this.bar();
-      }
+  data() {
+    return {
+      count: -1
+    };
+  },
+  mounted() {
+    HttpCommon.get('students')
+    .then((response) => {
+      this.count = response.data.length;
+    })
+    .catch((error) => {
+      // Handle errors.
+    });
+  },
+  methods: {
+    foo(): string { return 'foo'; },
+    bar(): string { return 'bar'; }
+  },
+  computed: {
+    fooBar(): string {
+      return this.foo() + this.bar();
     }
+  }
 });
 </script>
 
