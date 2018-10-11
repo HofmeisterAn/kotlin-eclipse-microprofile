@@ -1,3 +1,6 @@
 module.exports = {
-  baseUrl: '/app/'
+  baseUrl: '/app/',
+  devServer: {
+    proxy: process.env.VUE_APP_PROXY
+  }
 }

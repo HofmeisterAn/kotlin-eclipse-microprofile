@@ -13,18 +13,18 @@ internal class StudentServiceImpl : StudentService {
   }
 
   override fun get(id: UUID): Student {
-    TODO("not implemented")
+    return studentRepository.get(id)
   }
 
   override fun create(obj: Student) {
-    TODO("not implemented")
+    studentRepository.create(obj)
   }
 
   override fun update(obj: Student) {
-    TODO("not implemented")
+    studentRepository.update(obj)
   }
 
   override fun delete(obj: Student) {
-    TODO("not implemented")
+    studentRepository.delete(obj)
   }
 }
