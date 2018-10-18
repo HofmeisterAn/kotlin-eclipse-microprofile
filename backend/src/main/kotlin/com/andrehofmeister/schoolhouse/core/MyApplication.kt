@@ -6,4 +6,4 @@ import javax.ws.rs.core.Application
 
 @LoginConfig(authMethod = "MP-JWT", realmName = "TCK-MP-JWT")
 @ApplicationPath("/rest")
-class MyApplication : Application()
+internal class MyApplication : Application()

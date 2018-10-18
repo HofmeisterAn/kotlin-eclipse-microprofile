@@ -1,4 +1,4 @@
-package com.andrehofmeister.schoolhouse.student
+package com.andrehofmeister.schoolhouse.feature.student
 
 import org.jboss.arquillian.container.test.api.Deployment
 import org.jboss.arquillian.junit.Arquillian
