@@ -1,4 +1,4 @@
-package com.andrehofmeister.schoolhouse.student
+package com.andrehofmeister.schoolhouse.feature.student
 
 import java.util.UUID
 import javax.transaction.Transactional

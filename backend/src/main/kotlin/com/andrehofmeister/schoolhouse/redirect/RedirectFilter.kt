@@ -8,7 +8,7 @@ import javax.servlet.annotation.WebFilter
 import javax.servlet.http.HttpServletRequest
 
 @WebFilter("/*")
-class RedirectFilter : Filter {
+internal class RedirectFilter : Filter {
   private val skipServletPath: List<String> by lazy (mode = LazyThreadSafetyMode.SYNCHRONIZED) {
     listOf("/rest", "/css", "/img", "/js", "/Arquillian") // This should be combined in assets
   }
