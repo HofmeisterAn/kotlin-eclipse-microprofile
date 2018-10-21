@@ -34,7 +34,7 @@ internal class JsonWebToken {
     Algorithm.RSA256(publicKey as RSAPublicKey, privateKey as RSAPrivateKey)
   }
 
-  fun sign(payloadClaims: HashMap<String, Any>): String {
+  fun sign(payloadClaims: Map<String, Any>): String {
     return JWT.create()
       .withHeader(headerClaims)
       .withPayload(payloadClaims)
