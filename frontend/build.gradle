@@ -7,3 +7,8 @@ task npmRunBuild(type: Exec) {
   executable 'npm'
   args = ['run', 'build']
 }
+
+task npmRunDebug(type: Exec) {
+  executable 'npm'
+  args = ['run', 'serve']
+}

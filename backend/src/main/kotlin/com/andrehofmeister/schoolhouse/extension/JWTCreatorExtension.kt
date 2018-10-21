@@ -5,7 +5,8 @@ import java.time.LocalDateTime
 import java.time.ZoneId
 import java.util.Date
 
-fun JWTCreator.Builder.withPayload(payloadClaims: Map<String, Any>): JWTCreator.Builder {
+internal fun JWTCreator.Builder.withPayload(payloadClaims: Map<String, Any>): JWTCreator.Builder {
+  // Todo: Any better approach to add payload claims to the JWTCreator?
   payloadClaims.forEach { k, v ->
     when (v) {
       is Int -> withClaim(k, v)
@@ -15,6 +16,21 @@ fun JWTCreator.Builder.withPayload(payloadClaims: Map<String, Any>): JWTCreator.
       is String -> withClaim(k, v)
       is Date -> withClaim(k, v)
       is LocalDateTime -> withClaim(k, Date.from(v.atZone(ZoneId.systemDefault()).toInstant()))
+      is Array<*> -> {
+        if (v.isNotEmpty()) {
+          when (v.first()) {
+            is Int -> {
+              withArrayClaim(k, v.filterIsInstance<Int>().toTypedArray())
+            }
+            is Long -> {
+              withArrayClaim(k, v.filterIsInstance<Long>().toTypedArray())
+            }
+            is String -> {
+              withArrayClaim(k, v.filterIsInstance<String>().toTypedArray())
+            }
+          }
+        }
+      }
     }
   }
 

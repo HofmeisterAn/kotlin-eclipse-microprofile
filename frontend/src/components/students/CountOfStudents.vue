@@ -15,7 +15,7 @@ export default Vue.extend({
     };
   },
   mounted() {
-    HttpCommon.get('students')
+    new HttpCommon().axios.get('students')
     .then((response) => {
       this.count = response.data.length;
     })

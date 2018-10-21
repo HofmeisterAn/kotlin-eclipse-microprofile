@@ -11,27 +11,31 @@ import java.security.interfaces.RSAPublicKey
 
 internal class JsonWebToken {
   companion object {
-    val headerClaims: HashMap<String, Any> by lazy {
+    @JvmStatic
+    private val headerClaims: HashMap<String, Any> by lazy {
       // List of public claims https://www.iana.org/assignments/jwt/jwt.xhtml
       hashMapOf<String, Any>(
         PublicClaims.ALGORITHM to "RSA256",
         PublicClaims.TYPE to "JWT"
       )
     }
-  }
 
-  private val publicKey: PublicKey by lazy (mode = LazyThreadSafetyMode.SYNCHRONIZED) {
-    val rsaPublicPem = JsonWebToken::class.java.getResource("/rsa-public.pem").file
-    PemUtils.readPublicKeyFromFile(rsaPublicPem, "RSA")
-  }
+    @JvmStatic
+    private val publicKey: PublicKey by lazy {
+      val rsaPublicPem = JsonWebToken::class.java.getResource("/rsa-public.pem").file
+      PemUtils.readPublicKeyFromFile(rsaPublicPem, "RSA")
+    }
 
-  private val privateKey: PrivateKey by lazy (mode = LazyThreadSafetyMode.SYNCHRONIZED) {
-    val rsaPrivatePem = JsonWebToken::class.java.getResource("/rsa-private.pem").file
-    PemUtils.readPrivateKeyFromFile(rsaPrivatePem, "RSA")
-  }
+    @JvmStatic
+    private val privateKey: PrivateKey by lazy {
+      val rsaPrivatePem = JsonWebToken::class.java.getResource("/rsa-private.pem").file
+      PemUtils.readPrivateKeyFromFile(rsaPrivatePem, "RSA")
+    }
 
-  private val algorithm: Algorithm by lazy (mode = LazyThreadSafetyMode.SYNCHRONIZED) {
-    Algorithm.RSA256(publicKey as RSAPublicKey, privateKey as RSAPrivateKey)
+    @JvmStatic
+    private val algorithm: Algorithm by lazy {
+      Algorithm.RSA256(publicKey as RSAPublicKey, privateKey as RSAPrivateKey)
+    }
   }
 
   fun sign(payloadClaims: Map<String, Any>): String {
