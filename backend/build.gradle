@@ -55,7 +55,7 @@ task copyFrontendAssets(type: Copy) {
 /**
  * Starts the MicroProfile web app on Payara micro with debug port enabled.
  */
-task debug(type: JavaExec, dependsOn: [copyFrontendAssets, war]) {
+task debug(type: JavaExec, dependsOn: war) {
   main = '-jar'
 
   jvmArgs = [
@@ -75,7 +75,7 @@ task debug(type: JavaExec, dependsOn: [copyFrontendAssets, war]) {
 /**
  * Starts the MicroProfile web app on Payara micro.
  */
-task start(type: JavaExec, dependsOn: [copyFrontendAssets, war]) {
+task prod(type: JavaExec, dependsOn: [copyFrontendAssets, war]) {
   main = '-jar'
 
   args = [
