@@ -1,6 +1,9 @@
 package com.andrehofmeister.schoolhouse.security
 
+import com.auth0.jwt.exceptions.TokenExpiredException
 import com.auth0.jwt.impl.PublicClaims
+import org.junit.jupiter.api.Assertions
+import org.junit.jupiter.api.BeforeEach
 import org.junit.jupiter.api.Test
 import java.time.LocalDateTime
 
@@ -9,9 +12,15 @@ internal class RSAAlgorithmTest {
     JsonWebToken()
   }
 
-  private val payloadClaims: HashMap<String, Any> by lazy {
-    val today = LocalDateTime.now()
-    hashMapOf(
+  private val today: LocalDateTime by lazy {
+    LocalDateTime.now()
+  }
+
+  private lateinit var payloadClaims: HashMap<String, Any>
+
+  @BeforeEach
+  fun before() {
+    payloadClaims = hashMapOf(
       PublicClaims.ISSUER to "Issuer",
       PublicClaims.SUBJECT to "Subject",
       PublicClaims.AUDIENCE to "Audience",
@@ -29,5 +38,17 @@ internal class RSAAlgorithmTest {
     val token = jwt.sign(payloadClaims)
     // Then a valid token was created
     jwt.verify(token)
+  }
+
+  @Test
+  fun `sign payload claims with expired date and verify`() {
+    // Given is a jwt payload
+    // When the parameter `expires at` has expired
+    payloadClaims[PublicClaims.EXPIRES_AT] = today.minusWeeks(1)
+    val token = jwt.sign(payloadClaims)
+    // Then `TokenExpiredException` is thrown
+    Assertions.assertThrows(TokenExpiredException::class.java) {
+      jwt.verify(token)
+    }
   }
 }
