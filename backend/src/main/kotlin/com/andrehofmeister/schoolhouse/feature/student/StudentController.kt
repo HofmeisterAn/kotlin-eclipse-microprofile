@@ -26,14 +26,14 @@ internal open class StudentController {
 
   @GET
   @Path("/{id}")
-  @RolesAllowed("administrator")
+  @RolesAllowed("ADMIN")
   open fun get(@PathParam("id") id: UUID): Student {
     return Student.default
   }
 
   @GET
   @Path("/query")
-  @RolesAllowed("user")
+  @RolesAllowed("USER")
   open fun query(@QueryParam("start") start: Int, @QueryParam("size") size: Int): Student {
     return Student.default
   }

@@ -13,7 +13,7 @@ export default Vue.extend({
     login(): void {
       new HttpCommon().axios.post('login')
       .then((response) => {
-        localStorage.setItem('user-token', response.data);
+        localStorage.setItem('user-token', response.data.token);
       })
       .catch((error) => {
         localStorage.removeItem('user-token');
