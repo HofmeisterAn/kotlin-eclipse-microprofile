@@ -5,31 +5,17 @@ import java.time.LocalDateTime
 import java.time.ZoneId
 import java.util.Date
 
+@Suppress("UNCHECKED_CAST")
 internal fun JWTCreator.Builder.withPayload(payloadClaims: Map<String, Any>): JWTCreator.Builder {
-  // Todo: Any better approach to add payload claims to the JWTCreator?
-  payloadClaims.forEach { k, v ->
-    when (v) {
-      is Int -> withClaim(k, v)
-      is Long -> withClaim(k, v)
-      is Double -> withClaim(k, v)
-      is Boolean -> withClaim(k, v)
-      is String -> withClaim(k, v)
-      is Date -> withClaim(k, v)
-      is LocalDateTime -> withClaim(k, Date.from(v.atZone(ZoneId.systemDefault()).toInstant()))
-      is Array<*> -> {
-        if (v.isNotEmpty()) {
-          when (v.first()) {
-            is Int -> {
-              withArrayClaim(k, v.filterIsInstance<Int>().toTypedArray())
-            }
-            is Long -> {
-              withArrayClaim(k, v.filterIsInstance<Long>().toTypedArray())
-            }
-            is String -> {
-              withArrayClaim(k, v.filterIsInstance<String>().toTypedArray())
-            }
-          }
-        }
+  // Todo: Any better approach to add payload claims to the JWTCreator from a Map?
+  this.javaClass.getDeclaredField("payloadClaims").let {
+    it.isAccessible = true
+    val value = it.get(this) as MutableMap<String, Any>
+    payloadClaims.forEach { k, v ->
+      if (v is LocalDateTime) {
+        value[k] = Date.from(v.atZone(ZoneId.systemDefault()).toInstant()) // Adds compatibility for LocalDateTime
+      } else {
+        value[k] = v
       }
     }
   }

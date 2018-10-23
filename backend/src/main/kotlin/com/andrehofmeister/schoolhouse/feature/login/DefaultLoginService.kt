@@ -1,0 +1,6 @@
+package com.andrehofmeister.schoolhouse.feature.login
+
+import com.andrehofmeister.schoolhouse.cdi.ApplicationScopedInjection
+
+@ApplicationScopedInjection
+internal annotation class DefaultLoginService
