@@ -9,12 +9,14 @@
   },
   "dependencies": {
     "axios": "^0.18.0",
+    "js-cookie": "^2.2.0",
     "vue": "^2.5.17",
     "vue-class-component": "^6.0.0",
     "vue-property-decorator": "^7.0.0",
     "vue-router": "^3.0.1"
   },
   "devDependencies": {
+    "@types/js-cookie": "^2.2.0",
     "@vue/cli-plugin-babel": "^3.0.1",
     "@vue/cli-plugin-typescript": "^3.0.1",
     "@vue/cli-service": "^3.0.1",
