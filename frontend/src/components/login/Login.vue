@@ -5,18 +5,24 @@
 </template>
 
 <script lang="ts">
+import Cookies from 'js-cookie';
 import Vue from 'vue';
 import { HttpCommon } from '../../common/HttpCommon';
+
+const cookieName = 'access_token';
 
 export default Vue.extend({
   methods: {
     login(): void {
-      new HttpCommon().axios.post('login')
+      new HttpCommon().axios.post('login', {
+        username: 'username',
+        password: 'password'
+      })
       .then((response) => {
-        localStorage.setItem('user-token', response.data.token);
+        Cookies.set(cookieName, response.data.token, { expires: 7 });
       })
       .catch((error) => {
-        localStorage.removeItem('user-token');
+        Cookies.remove(cookieName);
       });
     }
   }
