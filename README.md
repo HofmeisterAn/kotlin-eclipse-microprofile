@@ -1,3 +1,5 @@
+[![Build Status](https://travis-ci.org/padme-amidala/kotlin-eclipse-microprofile.svg?branch=master)](https://travis-ci.org/padme-amidala/kotlin-eclipse-microprofile)
+
 # Eclipse MicroProfile with Kotlin
 
 An example implementation of the Eclipse MicroProfile 1.3 with JTA, Arquillian and Payara Micro in Kotlin. Vue.js is used as front end framework. Later I will add an automatic build pipeline.
