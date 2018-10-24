@@ -18,7 +18,6 @@ sourceSets {
 
 dependencies {
   // Application
-
   implementation 'org.eclipse.microprofile:microprofile:1.4'
   implementation 'org.bouncycastle:bcprov-jdk15on:1.60'
   implementation 'org.json:json:20180813'
