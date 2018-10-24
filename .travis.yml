@@ -1,0 +1,29 @@
+language: java
+
+# https://docs.travis-ci.com/user/languages/java/#Caching
+
+before_cache:
+- rm -f $HOME/.gradle/caches/modules-2/modules-2.lock
+- rm -fr $HOME/.gradle/caches/*/plugin-resolution/
+
+cache:
+  directories:
+  - $HOME/.gradle/caches/
+  - $HOME/.gradle/wrapper/
+  - $HOME/.groovy/grapes/
+
+jdk: openjdk8
+nodeJs: 11
+
+install: true  # Overwrite default install step (./gradlew assemble)
+
+jobs:
+  include:
+  - stage: "spotless"
+    script: ./gradlew spotlessCheck
+  - stage: "build backend"
+    script: ./gradlew war
+  - stage: "build frontend"
+    script: ./gradlew npmInstall npmRunBuild
+  - stage: "test"
+    script: ./gradlew test

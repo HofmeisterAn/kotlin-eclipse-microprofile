@@ -12,10 +12,13 @@ internal fun JWTCreator.Builder.withPayload(payloadClaims: Map<String, Any>): JW
     it.isAccessible = true
     val value = it.get(this) as MutableMap<String, Any>
     payloadClaims.forEach { k, v ->
-      if (v is LocalDateTime) {
-        value[k] = Date.from(v.atZone(ZoneId.systemDefault()).toInstant()) // Adds compatibility for LocalDateTime
-      } else {
-        value[k] = v
+      when (v) {
+        is LocalDateTime -> {
+          value[k] = Date.from(v.atZone(ZoneId.systemDefault()).toInstant()) // Adds compatibility for LocalDateTime
+        }
+        else -> {
+          value[k] = v
+        }
       }
     }
   }
