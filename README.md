@@ -16,7 +16,7 @@ To debug the application start the backend with `./gradlew debug` and the front 
 
 ## Authors
 
-* **Andre Hofmeister** - *Initial work* - [padme-amidala](https://github.com/padme-amidala/)
+* **Andre Hofmeister** - *Initial work* - [HofmeisterAn](https://github.com/HofmeisterAn/)
 
 ## License
 
