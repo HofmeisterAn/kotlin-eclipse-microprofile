@@ -1,4 +1,4 @@
-[![Build Status](https://travis-ci.org/padme-amidala/kotlin-eclipse-microprofile.svg?branch=master)](https://travis-ci.org/padme-amidala/kotlin-eclipse-microprofile)
+[![Build Status](https://travis-ci.org/HofmeisterAn/kotlin-eclipse-microprofile.svg?branch=master)](https://travis-ci.org/HofmeisterAn/kotlin-eclipse-microprofile)
 
 # Eclipse MicroProfile with Kotlin
 
