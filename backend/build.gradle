@@ -1,3 +1,5 @@
+def payaraMicroJar = new File("${project.'payaraMicroJar.version'}").name
+
 sourceSets {
   main {
     kotlin { srcDirs += 'src/main/kotlin' }
@@ -18,7 +20,7 @@ sourceSets {
 
 dependencies {
   // Application
-  implementation 'org.eclipse.microprofile:microprofile:1.4'
+  implementation 'org.eclipse.microprofile:microprofile:2.1'
   implementation 'org.bouncycastle:bcprov-jdk15on:1.60'
   implementation 'org.json:json:20180813'
   implementation 'org.hibernate:hibernate-core:5.3.7.Final'
@@ -41,7 +43,13 @@ dependencies {
 
 war { archiveName 'app.war' }
 
-def payaraMicroJar = 'payara-micro-5.183.jar'
+task downloadPayaraMicroJar() {
+  def jar = new File("$project.rootDir/backend/$payaraMicroJar")
+  if (!jar.exists()) {
+    new URL("${project.'payaraMicroJar.version'}").withInputStream { is ->
+      jar.withOutputStream { it << is } }
+  }
+}
 
 /**
  * Copies the front end assets to webapp.
@@ -56,7 +64,7 @@ task copyFrontendAssets(type: Copy) {
 /**
  * Starts the MicroProfile web app on Payara micro with debug port enabled.
  */
-task debug(type: JavaExec, dependsOn: war) {
+task debug(type: JavaExec, dependsOn: [downloadPayaraMicroJar, war]) {
   main = '-jar'
 
   jvmArgs = [
@@ -76,7 +84,11 @@ task debug(type: JavaExec, dependsOn: war) {
 /**
  * Starts the MicroProfile web app on Payara micro.
  */
-task prod(type: JavaExec, dependsOn: [copyFrontendAssets, war]) {
+task prod(type: JavaExec, dependsOn: [
+  downloadPayaraMicroJar,
+  copyFrontendAssets,
+  war
+]) {
   main = '-jar'
 
   args = [
@@ -96,3 +108,5 @@ task payaraMicroManagedTest(type: Test) {
     'arquillian.launch': 'payara-micro-managed'
   ]
 }
+
+test.dependsOn downloadPayaraMicroJar

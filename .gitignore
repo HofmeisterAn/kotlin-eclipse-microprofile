@@ -106,3 +106,4 @@ backend/src/main/webapp/favicon.ico
 backend/src/main/webapp/css
 backend/src/main/webapp/img
 backend/src/main/webapp/js
+backend/payara-micro-*.jar

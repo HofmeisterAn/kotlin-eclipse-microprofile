@@ -3,7 +3,7 @@
   <defaultProtocol type="Servlet 3.0" />
   <container qualifier="payara-micro-managed" default="true">
     <configuration>
-      <property name="microJar">payara-micro-5.183.jar</property>
+      <property name="microJar">payara-micro-5.184.jar</property>
       <property name="outputToConsole">true</property>
       <property name="debug">false</property>
       <!--
