@@ -99,7 +99,7 @@ selenium-debug.log
 *.sln
 
 # Project related files
-frontend/dist
+frontend-vuejs/dist
 backend/build
 backend/src/main/webapp/index.html
 backend/src/main/webapp/favicon.ico

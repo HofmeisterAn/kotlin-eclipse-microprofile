@@ -1,1 +1,1 @@
-include ":backend", ":frontend"
+include ":backend", ":frontend-kotlin2js", ":frontend-vuejs"

@@ -2,7 +2,7 @@
 
 # Eclipse MicroProfile with Kotlin
 
-An example implementation of the Eclipse MicroProfile 1.4 with JTA, Arquillian and Payara Micro in Kotlin. Vue.js is used as front end framework.
+An example implementation of the Eclipse MicroProfile 2.1 with JTA, Arquillian and Payara Micro in Kotlin. Vue.js is used as front end framework.
 
 ## Getting Started
 

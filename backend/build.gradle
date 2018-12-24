@@ -43,7 +43,7 @@ dependencies {
 
 war { archiveName 'app.war' }
 
-task downloadPayaraMicroJar() {
+task downloadPayaraMicroJar {
   def jar = new File("$project.rootDir/backend/$payaraMicroJar")
   if (!jar.exists()) {
     new URL("${project.'payaraMicroJar.version'}").withInputStream { is ->
@@ -57,7 +57,7 @@ task downloadPayaraMicroJar() {
 task copyFrontendAssets(type: Copy) {
   delete fileTree('src/main/webapp').matching { exclude 'WEB-INF', '**/.gitkeep' }
 
-  from "$project.rootDir/frontend/dist"
+  from "$project.rootDir/frontend-vuejs/dist"
   into 'src/main/webapp'
 }
 
@@ -109,4 +109,4 @@ task payaraMicroManagedTest(type: Test) {
   ]
 }
 
-test.dependsOn downloadPayaraMicroJar
+task tests(dependsOn: [downloadPayaraMicroJar, war])
